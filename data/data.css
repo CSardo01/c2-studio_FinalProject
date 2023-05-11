@@ -1,0 +1,346 @@
+:root {
+  --white: #fff8ea;
+  --green: #0a5625;
+  --red: #ff351b;
+  --brown: #311919;
+}
+html {
+  background-color: var(--white);
+  color: var(--brown);
+  font-family: articulat-cf, sans-serif;
+  font-weight: 300;
+  font-style: normal;
+  font-size: 14pt;
+  overflow-x: hidden;
+}
+.curtain {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: var(--white);
+  z-index: 100;
+  opacity: 1;
+  transition: all 1s linear 1s;
+}
+.raise-curtain {
+  transition: all 1s linear 1s;
+  opacity: 0;
+  z-index: -100;
+}
+body {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 4rem;
+  opacity: 1;
+  transition: opacity 1s linear 1s;
+}
+.hidden {
+  opacity: 0;
+  transition: opacity 1s linear 1s;
+}
+header {
+  background-color: var(--red);
+  color: var(--white);
+  width: calc(100% + 16rem);
+  position: relative;
+  left: -8rem;
+  top: -8rem;
+  padding: 8rem 8rem 2rem 8rem;
+  margin-bottom: -8rem;
+  transform: rotate(5deg);
+  transition: all 1s cubic-bezier(0.76, 0, 0.24, 1);
+}
+.rotate {
+  transform: rotate(-5deg);
+}
+h1 {
+  font-family: articulat-cf, sans-serif;
+  font-weight: 800;
+  font-style: normal;
+  font-size: 4rem;
+}
+hr {
+  width: 100%;
+  border: solid 1px var(--red);
+  margin-bottom: 2rem;
+}
+p {
+  font-weight: 400;
+  font-size: 1rem;
+}
+header > .container {
+  position: relative;
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  box-shadow: 0px 0px 0px 2px var(--white);
+}
+
+button {
+  background-color: var(--red);
+  height: fit-content;
+  padding: 1rem;
+  box-shadow: 0px 0px 0px 2px var(--white);
+  position: absolute;
+
+  right: -6rem;
+  cursor: pointer, auto;
+  transition: all 150ms ease-in-out;
+}
+button:hover {
+  background-color: var(--white);
+  color: var(--red);
+  box-shadow: 0px 0px 0px 2px var(--red);
+  animation-name: spin;
+  animation-duration: 2500ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: cubic-bezier(0.83, 0, 0.17, 1);
+}
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.collection-container {
+  background-color: var(--white);
+  width: 100%;
+  /* flex-grow: 1;
+  display: flex;
+  gap: 1rem; */
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-gap: 1rem;
+}
+
+.dataset-column {
+  position: relative;
+  width: 100%;
+  display: grid;
+  grid-gap: 1rem;
+}
+
+.vertical-line {
+  position: absolute;
+  left: 50%;
+  top: 10%;
+  width: 2px;
+  height: 100%;
+  background-color: var(--red);
+}
+.icon-container {
+  overflow: hidden;
+  /* background-color: aqua; */
+  position: relative;
+  width: 100;
+  aspect-ratio: 1/1;
+  margin-bottom: 4rem;
+  overflow: visible;
+}
+.icon-container img {
+  position: absolute;
+  transform: scale(120%);
+}
+h2 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  background-color: var(--red);
+  color: var(--white);
+  min-width: fit-content;
+  padding: 0.25em;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  box-shadow: 0px 0px 0px 2px var(--white);
+  z-index: 2;
+}
+/* generic dataset styling
+*/
+.dataset-column .dataset {
+  opacity: 0;
+  transform: scaleY(0.5) scaleX(0.5);
+  transform-origin: center;
+  transition: all 300ms ease-in-out;
+  overflow-x: visible;
+}
+
+div.dataset,
+div.dataset div {
+  transition: all 300ms ease-in-out;
+
+  box-shadow: 0px 0px 0px 4px var(--green);
+}
+.dataset .data-female,
+.dataset .data-male {
+  transition: all 300ms ease-in-out;
+
+  box-shadow: 0px 0px 0px 2px var(--green);
+}
+.dataset.show {
+  opacity: 1;
+}
+/* demographic and data styles */
+.dataset-sbp {
+  background-color: var(--white);
+  width: 100%;
+  aspect-ratio: 1/1;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+}
+.data-sbp {
+  background-color: var(--white);
+  color: var(--white);
+  border-radius: 100%;
+  margin: auto;
+  aspect-ratio: 1/1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+.data-sbp:hover {
+  background-color: var(--green);
+  color: var(--white);
+}
+.dataset-gender,
+.dataset-grades {
+  background-color: var(--white);
+  width: 100% !important;
+  aspect-ratio: 1/1;
+  display: grid;
+  position: relative;
+}
+.dataset-grades {
+  aspect-ratio: 1/2;
+}
+.dataset-name {
+  background-color: var(--white);
+  padding: 0.5rem;
+  position: absolute;
+  top: 1rem;
+  left: -2rem;
+  opacity: 0;
+  box-shadow: 0px 0px 0px 2px var(--green);
+  z-index: 10;
+}
+.dataset:hover .dataset-name {
+  opacity: 1;
+  z-index: 3;
+}
+
+.data-female,
+.data-male {
+  color: var(--white);
+  display: flex;
+  align-items: flex-end;
+  justify-content: bottom;
+  padding: 0.5rem;
+  z-index: 2;
+}
+.data-male:hover,
+.data-female:hover {
+  background-color: var(--green);
+}
+.dataset-poverty {
+  background-color: var(--white);
+  width: 100% !important;
+  aspect-ratio: 1/1;
+  position: relative;
+}
+.data-poverty {
+  position: relative;
+  color: var(--white);
+  top: 0;
+  left: 0;
+  aspect-ratio: 1/1;
+  padding: 0.5em;
+  z-index: 2;
+}
+.data-poverty:hover {
+  color: var(--brown);
+  background-color: var(--green);
+}
+.data-poverty > P {
+  position: absolute;
+  left: calc(100% + 0.5rem);
+}
+/* Hover States for column */
+.dataset-column:hover .dataset {
+  opacity: 1;
+  transform: scaleY(1) scaleX(1);
+}
+.dataset-column:hover div.dataset,
+.dataset-column:hover div.dataset div {
+  box-shadow: 0px 0px 0px 2px var(--green);
+}
+
+.dataset-column:hover div.dataset .data-male,
+.dataset-column:hover div.dataset .data-female {
+  box-shadow: 0px 0px 0px 1px var(--green);
+}
+footer {
+  width: calc(100% + 8rem);
+  left: -4rem;
+  height: 40vh;
+  position: relative;
+  bottom: -4rem;
+  left: -4rem;
+}
+footer > img {
+  width: 100%;
+  object-fit: cover;
+  position: absolute;
+}
+/* .data-sbp {
+  background-color: lightcyan;
+  margin-left: auto;
+  margin-right: auto;
+  aspect-ratio: 1/1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.dataset-gender {
+  background-color: hotpink;
+  aspect-ratio: 1/1;
+  margin-left: auto;
+  margin-right: auto;
+  display: grid;
+}
+.data-male {
+  width: 100%;
+  background-color: rgb(179, 134, 156);
+  aspect-ratio: 1/1;
+}
+.data-female {
+  width: 100%;
+  background-color: rgb(165, 60, 111);
+  aspect-ratio: 1/1;
+}
+.dataset-race {
+  background-color: aliceblue;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  aspect-ratio: 1/1;
+  margin-left: auto;
+  margin-right: auto;
+}
+.data-white,
+.data-black,
+.data-asian,
+.data-hispanic,
+.data-multiracial,
+.data-native {
+  background-color: rgb(165, 60, 111);
+  aspect-ratio: 1/1;
+} */
